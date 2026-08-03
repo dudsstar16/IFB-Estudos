@@ -37,7 +37,7 @@ class Interface:
                 print("\nSaindo da Calculadora. Até Logo!\n")
                 break
 
-            if opcao not in {"1, 2, 3, 4"}:
+            if opcao not in {"1", "2", "3", "4"}:
                 print("\nOpção Inválida. Por favor, escolha entre 1 e 5.\n")
                 continue 
 
