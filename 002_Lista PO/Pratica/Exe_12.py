@@ -12,13 +12,24 @@ ataque.
 '''
 from abc import ABC, abstractmethod
 
+# TOTALMENTE ABSTRATA 
+#  - Perceba que ela não possui atributos.
+# - Ela apenas obriga as subclasses.
+
+
 class Lutador(ABC):
 
     @abstractmethod
     def get_nome(self):
             pass 
-        self.nivel_poder = nivel_poder
-        self.ataque = ataque 
+
+    @abstractmethod
+    def get_nivel_poder(self):
+        pass
+
+    @abstractmethod
+    def atacar(self):
+        pass
 
 # SUBCLASSES
 
@@ -31,16 +42,64 @@ específico   ao   atacar.
 '''
 
 class Saiyajin(Lutador):
-    def __init__(self, nome, nivel_poder, ataque):
-        super().__init__(nome, nivel_poder, ataque)
+    def __init__(self, nome, nivel_poder):
+        self.nome = nome
+        self.nivel_poder = nivel_poder
+
+# Subclasses devem acessar seus próprios atributos
+#   - logo não se usa o SUPER
+
+    def get_nome(self):
+        return self.nome
+
+    def get_nivel_poder(self):
+        return self.nivel_poder
+
+# POLIMORFISMO 
+#   - cada subclasse possui um ataque diferente
+
+    def atacar(self):
+        print(f"{self.nome} lançou um Kamehameha!")
 
 class Androide(Lutador):
-    def __init__(self, nome, nivel_poder, ataque):
-        super().__init__(nome, nivel_poder, ataque)
+    def __init__(self, nome, nivel_poder):
+        self.nome = nome
+        self.nivel_poder = nivel_poder
+
+# Subclasses devem acessar seus próprios atributos
+#   - logo não se usa o SUPER
+
+    def get_nome(self):
+        return self.nome
+
+    def get_nivel_poder(self):
+        return self.nivel_poder
+
+# POLIMORFISMO 
+#   - cada subclasse possui um ataque diferente
+
+    def atacar(self):
+        print(f"{self.nome} disparou um Canhão de Energia!")
 
 class Namekuseijin(Lutador):
-    def __init__(self, nome, nivel_poder, ataque):
-        super().__init__(nome, nivel_poder, ataque)
+    def __init__(self, nome, nivel_poder):
+        self.nome = nome
+        self.nivel_poder = nivel_poder
+
+# Subclasses devem acessar seus próprios atributos
+#   - logo não se usa o SUPER
+
+    def get_nome(self):
+        return self.nome
+
+    def get_nivel_poder(self):
+        return self.nivel_poder
+
+# POLIMORFISMO 
+#   - cada subclasse possui um ataque diferente
+
+    def atacar(self):
+        print(f"{self.nome} utilizou o Makankosappo!")
 
 # MENU 
 
@@ -60,11 +119,61 @@ poder   seja   um   valor   numérico   positivo.
 
 def main():
 
+    lutadores = []
+
     while True:
 
         print("\n---Universo de Dragon Ball---\n")
-        print("\n1. ")
+        print("\n1. Cadastrar lutador")
+        print("2. Listar lutadores")
+        print("3. Simular ataque")
+        print("0. Sair")
 
+        opcao = input("\nEscolha uma opção: ").strip()
+
+        if opcao == "1":
+            try:
+                print("\n1 - Sayajin")
+                print("\n2 - Androide")
+                print("\n3 - Namekuseijin\n")
+
+                raca = input("\nEscolha a raça: ")
+                nome = input("Nome do lutador: ")
+
+                if not nome.strip():
+                    raise ValueError("\nNome inválido. Tente novamente.")
+
+                nivel = int(input("Nível de Poder: "))
+
+                if nivel <= 0:
+                    raise ValueError("\nO nível precisa ser POSITIVO. Tente novamente.")
+
+                if raca == "1":
+                    lutador = Saiyajin(nome, nivel)
+                elif raca == "2":
+                    lutador = Androide(nome, nivel)
+                else:
+                    lutador = Namekuseijin(nome, nivel)
+
+                lutadores.append(lutador)
+
+            except ValueError as e:
+                print(f"Erro: {e}")  
+            
+        elif opcao == "2":
+            for lutador in lutadores:
+                print()
+                print(f"{lutador.get_nome()} - Poder: {lutador.get_nivel_poder()}")
+            
+        elif opcao == "3":
+            for lutador in lutadores:
+                lutador.atacar()
+
+        elif opcao == "0":
+            print("\nObrigada por utilizar os nossos Serviços. Volte sempre. :D")
+            break
+        else:
+            print("\nOpçao Inválida. Por favor, digite uma escolha válida.")
 
 
 if __name__ == "__main__":
