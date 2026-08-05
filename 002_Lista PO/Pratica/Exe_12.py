@@ -123,7 +123,7 @@ def main():
 
     while True:
 
-        print("\n---Universo de Dragon Ball---\n")
+        print("\n---Universo de Dragon Ball---")
         print("\n1. Cadastrar lutador")
         print("2. Listar lutadores")
         print("3. Simular ataque")
@@ -132,48 +132,80 @@ def main():
         opcao = input("\nEscolha uma opção: ").strip()
 
         if opcao == "1":
+
             try:
-                print("\n1 - Sayajin")
-                print("\n2 - Androide")
-                print("\n3 - Namekuseijin\n")
+                print("\nTipos de lutadores: ")
+                print("1 - Sayajin")
+                print("2 - Androide")
+                print("3 - Namekuseijin")
 
                 raca = input("\nEscolha a raça: ")
-                nome = input("Nome do lutador: ")
 
-                if not nome.strip():
-                    raise ValueError("\nNome inválido. Tente novamente.")
+                if not raca in ["1", "2", "3"]:
+                    raise Exception ("\nTipo inválido. Por favor insira uma escolha válida.\n")
+                    
+                nome = input("Nome do lutador: ").strip()
+
+                if not nome:
+                    raise Exception("\nNome inválido. Tente novamente.\n")
 
                 nivel = int(input("Nível de Poder: "))
 
-                if nivel <= 0:
-                    raise ValueError("\nO nível precisa ser POSITIVO. Tente novamente.")
+                if nivel <= 0 or not nivel:
+                    raise Exception("\nO nível precisa ser POSITIVO e não pode estar vazio. Tente novamente.\n")
+
+                # Atribuir os dados a cada sublasse
 
                 if raca == "1":
                     lutador = Saiyajin(nome, nivel)
                 elif raca == "2":
                     lutador = Androide(nome, nivel)
-                else:
+                elif raca == "3":
                     lutador = Namekuseijin(nome, nivel)
 
                 lutadores.append(lutador)
 
-            except ValueError as e:
-                print(f"Erro: {e}")  
+                print(f"\n{lutador.get_nome()} lutador cadastrado com sucesso.\n")
+
+            except Exception as e:
+                print(f"\nErro: {e}")  
             
         elif opcao == "2":
-            for lutador in lutadores:
-                print()
-                print(f"{lutador.get_nome()} - Poder: {lutador.get_nivel_poder()}")
+
+            if not lutadores:
+                print("\nNenhum lutador cadastrado.\n")
+            else:
+                # Apresentar os indices por isso o enumerate 
+                for i, lutador in enumerate(lutadores, start = 1):
+                    print()
+                    print(f"{i}. {lutador.get_nome()} - Poder: {lutador.get_nivel_poder()}")
             
         elif opcao == "3":
-            for lutador in lutadores:
-                lutador.atacar()
+
+            if not lutadores:
+                print("Nenhum lutador para atacar.\n")
+            else:
+                for i, lutador in enumerate(lutadores, start = 1):
+                    print(f"\n{i}. {lutador.get_nome()}\n")
+
+            try:    
+                escolha = int(input("\nEscolha o número do lutador: "))
+                if 1 <= escolha <= len(lutadores):
+                    print(f"\n{lutadores[escolha - 1]}. {lutadores.get_nome()} vai atacar!\n")
+                    # - 1 porque a lista começa no 0 (revisar, fiquei em dúvida)
+                    lutadores[escolha - 1].atacar()
+
+                else:
+                    raise Exception ("\nNúmero inválido para escolha de lutador.\n")
+
+            except Exception as e:
+                print(f"\nErro: {e}\n")
 
         elif opcao == "0":
-            print("\nObrigada por utilizar os nossos Serviços. Volte sempre. :D")
+            print("\nEncerrando o Torneio. Até a próxima ! :D\n")
             break
         else:
-            print("\nOpçao Inválida. Por favor, digite uma escolha válida.")
+            print("\nOpçao Inválida. Por favor, digite uma escolha válida.\n")
 
 
 if __name__ == "__main__":
