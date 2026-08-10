@@ -14,7 +14,15 @@ modelo objeto-relacional
 
 ---------------------
 
-até a pagina 24 do slide
+até a pagina 24 do slide (05/08)
+
+---------------------
+
+MODELO RELACIONAL É CONSISTENTE (não pode ter perda de dados)
+
+---------------------
+
+até a pagina  do slide (10/08)
 
 ---------------------
 
