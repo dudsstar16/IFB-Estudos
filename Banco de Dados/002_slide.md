@@ -1,9 +1,11 @@
 
 -------------------------------
 
-ate o slide  (12/08)
+ate o slide 62 (12/08)
 
 -------------------------------
+
+Autor Importante (livros de BD): Carlos A.Heuser
 
 # Modelo Conceitual e DER
 
