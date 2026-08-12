@@ -22,7 +22,13 @@ MODELO RELACIONAL É CONSISTENTE (não pode ter perda de dados)
 
 ---------------------
 
-até a pagina  do slide (10/08)
+até a pagina 58 do slide (10/08)
+
+---------------------
+
+---------------------
+
+até a pagina  do slide (12/08)
 
 ---------------------
 
