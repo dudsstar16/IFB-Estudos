@@ -1,3 +1,23 @@
+
+------------------
+
+slide (1) ate a pagina 26 (/08)
+
+------------------
+
+------------------
+
+slide (1) ate a pagina 58 (10/08)
+
+------------------
+
+------------------
+
+slide (1) finalizado (12/08)
+
+------------------
+
+
 # Banco de Dados — Conceitos Fundamentais
 
 > Etapa de aprendizagem: **Teoria**
