@@ -5,6 +5,12 @@ ate o slide 62 (12/08)
 
 -------------------------------
 
+-------------------------------
+
+ate o slide 84 (17/08) - finalizado
+
+-------------------------------
+
 Autor Importante (livros de BD): Carlos A.Heuser
 
 # Modelo Conceitual e DER
