@@ -38,9 +38,8 @@ class UsuarioController:
     def excluir(self):
         try:
             id_usuario = solicitar_id()
-            if id_usuario is not None:
-                return
-            self.model.excluir_usuario(id_usuario)
+            if id_usuario is not None: 
+                self.model.excluir_usuario(id_usuario)
             mensagem("\n🗑️ Usuário excluído com sucesso!")
         except Exception as e:
             mensagem(f"\n❌ Erro ao excluir usuário: {e}")
