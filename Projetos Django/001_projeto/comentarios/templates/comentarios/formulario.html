@@ -1,0 +1,37 @@
+
+<!-- Template que exibe o formulário para enviar um comentário e lista os comentários existentes -->
+
+<h2>Enviar Comentário</h2>
+
+<form method="POST">
+
+    <!-- Proteção contra CSRF necessária para formulários POST no Django -->
+    {% csrf_token %}
+
+    <!-- Campo para o nome do autor do comentário -->
+    <label>Autor:</label><br>
+    <input type="text" name="autor"><br><br>
+
+    <!-- Campo para o texto do comentário -->
+    <label>Texto:</label><br>
+    <textarea name="texto"></textarea><br><br>
+
+    <!-- Botão que submete o formulário; a view faz (redireciona após POST) -->
+    <button type="submit">Enviar</button>
+
+</form>
+
+<h2>Comentários</h2>
+
+<ul>
+    <!-- Itera sobre a lista de comentários passada pela view -->
+    {% for comentario in comentarios %}
+        <!-- Exibe autor e texto do comentário -->
+        <li>{{ comentario.autor }}: {{ comentario.texto }}</li>
+    {% empty %}
+
+        <!-- Caso não haja comentários, mostra mensagem alternativa -->
+        <li>Nenhum comentário disponível.</li>
+    {% endfor %}
+
+</ul>
