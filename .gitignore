@@ -11,9 +11,7 @@ __pycache__/
 *$py.class
 *.so
 
-# Banco de dados SQLite local
-*.sqlite3
-*.sqlite3-journal
+
 
 # IDEs e editores
 .vscode/
